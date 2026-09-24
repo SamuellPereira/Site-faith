@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel — Faith Store</title><link rel="stylesheet" href="styles.css"></head>
+<body class="admin-page"><header class="topbar"><a class="brand" href="index.html"><img src="assets/faith-logo.png"><span>FAITH STORE / ADMIN</span></a><a href="index.html">Voltar à loja</a></header>
+<main class="admin-wrap">
+<section id="loginPanel" class="admin-login"><div class="panel"><span class="section-kicker">ÁREA RESTRITA</span><h1>Painel administrativo</h1><p>Entre com uma conta autorizada no Supabase Auth.</p>
+<form id="loginForm"><input id="email" type="email" placeholder="E-mail" required><input id="password" type="password" placeholder="Senha" required><button class="btn primary">Entrar</button></form><div id="loginMsg" class="status"></div></div></section>
+<section id="dashboard" class="hidden">
+<div class="admin-top"><div><span class="section-kicker">ADMIN</span><h1>Gerenciar camisetas</h1></div><button id="logout" class="btn ghost">Sair</button></div>
+<div class="admin-grid">
+<div class="panel"><h2>Novo anúncio</h2><p class="admin-note">Cada anúncio representa uma única camiseta.</p><form id="productForm">
+<input id="pName" placeholder="Nome do carro" required><input id="pBrand" placeholder="Marca" required><input id="pStock" type="number" value="1" min="1" max="1" readonly title="Cada anúncio possui 1 unidade">
+<input id="pImage" placeholder="URL da imagem (ou caminho /assets/...)" required><label class="check"><input id="pActive" type="checkbox" checked> Ativo</label><button class="btn primary">Criar anúncio</button></form></div>
+<div class="panel"><h2>Reservas recentes</h2><div id="reservations"></div></div>
+</div>
+<div class="panel"><h2>Anúncios</h2><div id="adminProducts" class="admin-products"></div></div>
+</section></main><div id="toast" class="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="admin.js"></script></body></html>

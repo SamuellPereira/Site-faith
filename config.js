@@ -5,8 +5,8 @@ window.FAITH_CONFIG = {
   WHATSAPP_EDGE_FUNCTION: "notify-sellers",
   CREATOR: {
     INSTAGRAM: "https://instagram.com/samue.pereira",
-    LINKEDIN: "https://linkedin.com/in/samuel-pereira",
-    GITHUB: "https://github.com/samuel-pereira"
+    LINKEDIN: "https://www.linkedin.com/in/samuel-s-pereira/",
+    GITHUB: "https://github.com/SamuellPereira/Site-faith"
   },
   COLUMNS: {
     products: { id:"id", name:"nome", brand:"marca", image:"imagem", stock:"estoque", active:"ativo" },

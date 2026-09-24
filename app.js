@@ -49,17 +49,8 @@
   function openReservation(p){if(!p||p.stock<=0)return;modalBody.innerHTML=`<div class="reservation-summary"><img src="${esc(p.image)}" alt=""><div><span class="red-label">RESERVA</span><h2>${esc(p.name)}</h2><small>${esc(p.brand)} · ${p.stock} disponível(is)</small></div></div><form id="reserveForm"><div class="form-grid"><input name="name" placeholder="Seu nome" required maxlength="80"><input name="whatsapp" placeholder="WhatsApp" required maxlength="25"><textarea class="full" name="note" rows="3" placeholder="Observação (opcional)" maxlength="300"></textarea></div><div class="form-actions"><button type="button" class="btn" id="cancelReserve">Cancelar</button><button class="btn primary">Confirmar reserva</button></div></form>`;modal.classList.remove('hidden');modal.setAttribute('aria-hidden','false');$('cancelReserve').onclick=closeModal;$('reserveForm').onsubmit=e=>submitReservation(e,p)}
   async function submitReservation(e,p){e.preventDefault();const fd=new FormData(e.target);const r={name:fd.get('name').trim(),whatsapp:fd.get('whatsapp').trim(),note:(fd.get('note')||'').trim()};if(!ready()){notify('O site está em modo demonstração. Configure o Supabase para ativar reservas.');return}
     const {data,error}=await supa.rpc('reservar_camiseta',{p_camiseta_id:String(p.id),p_nome:r.name,p_whatsapp:r.whatsapp,p_observacao:r.note});
-<<<<<<< HEAD
     if(error){notify('Não foi possível reservar. Confira o supabase_setup.sql.');return} if(data?.success===false){notify(data.message||'Sem estoque.');return}
     p.stock=Math.max(0,p.stock-1);closeModal();render();notify('Reserva enviada com sucesso!',true);sendWhatsApp(r,p);
-=======
-    if(error){notify(`Não foi possível reservar: ${error.message||'erro no Supabase'}`);return} if(data?.success===false){notify(data.message||'Sem estoque.');return}
-    p.stock=Math.max(0,p.stock-1);closeModal();render();
-    const reservationId = data?.reservation_id || '';
-    try { localStorage.setItem('faith_last_reservation', JSON.stringify({id:reservationId, product:p.name, name:r.name, whatsapp:r.whatsapp, createdAt:new Date().toISOString()})); } catch(_) {}
-    showReservationSuccess(reservationId,p,r);
-    sendWhatsApp(r,p);
->>>>>>> a053e2ead154d86cb006c0f8a9b693350d94af93
   }
   async function sendWhatsApp(r,p){
     const payload={productName:p.name,name:r.name,customerWhatsapp:r.whatsapp,note:r.note||''};
@@ -76,25 +67,10 @@
     valid.forEach((n,i)=>setTimeout(()=>window.open(`https://wa.me/${n}?text=${encodeURIComponent(text)}`,'_blank'),i*250));
   }
 
-<<<<<<< HEAD
   function closeModal(){modal.classList.add('hidden');modal.setAttribute('aria-hidden','true')}
   searchEl.addEventListener('input',render);$('modalClose').onclick=closeModal;modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
   $('viewerClose').onclick=closeViewer;$('viewer').addEventListener('click',e=>{if(e.target===$('viewer'))closeViewer()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeViewer()}});
-=======
-  function showReservationSuccess(id,p,r){
-    const box=$('reservationSuccess');
-    $('successBody').innerHTML=`<div class="success-mark">✓</div><span class="red-label">RESERVA CONFIRMADA</span><h2>${esc(p.name)}</h2><p>Obrigado, <strong>${esc(r.name)}</strong>! Sua reserva foi registrada.</p>${id?`<div class="reservation-code"><small>CÓDIGO DA RESERVA</small><strong>${esc(id)}</strong></div>`:''}<p class="success-note">A camiseta foi retirada do estoque. Guarde seu código para consultar com os vendedores.</p><button class="btn primary" id="successOk">Fechar</button>`;
-    box.classList.remove('hidden');box.setAttribute('aria-hidden','false');
-    $('successOk').onclick=closeSuccess;$('successClose').onclick=closeSuccess;
-  }
-  function closeSuccess(){const box=$('reservationSuccess');box.classList.add('hidden');box.setAttribute('aria-hidden','true')}
-
-  function closeModal(){modal.classList.add('hidden');modal.setAttribute('aria-hidden','true')}
-  searchEl.addEventListener('input',render);$('modalClose').onclick=closeModal;modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-  $('viewerClose').onclick=closeViewer;$('viewer').addEventListener('click',e=>{if(e.target===$('viewer'))closeViewer()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeViewer();closeSuccess()}});
->>>>>>> a053e2ead154d86cb006c0f8a9b693350d94af93
 
   $('creatorLinkedin').href=C.CREATOR?.LINKEDIN||'#';$('creatorGithub').href=C.CREATOR?.GITHUB||'#'; load();
 })();

@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Painel — Faith Store</title><link rel="icon" href="assets/faith-logo.png"><link rel="stylesheet" href="styles.css"></head>
+<body class="admin-page">
+<header class="topbar"><a class="brand" href="index.html"><img src="assets/faith-logo.png" alt="Faith Car Crew"><span>FAITH STORE / ADMIN</span></a><a href="index.html">← Voltar à loja</a></header>
+<main class="admin-wrap">
+<section id="loginPanel" class="admin-login"><div class="panel"><span class="section-kicker">ÁREA RESTRITA</span><h1>Painel administrativo</h1><p>Entre com uma conta autorizada no Supabase Auth.</p><form id="loginForm"><input id="email" type="email" placeholder="E-mail" autocomplete="username" required><input id="password" type="password" placeholder="Senha" autocomplete="current-password" required><button class="btn primary" type="submit">Entrar</button></form><div id="loginMsg" class="status"></div></div></section>
+<section id="dashboard" class="hidden">
+  <div class="admin-top"><div><span class="section-kicker">FAITH STORE / ADMIN</span><h1>Painel de controle</h1><p class="admin-note">Gerencie anúncios e acompanhe as reservas em um só lugar.</p></div><button id="logout" class="btn ghost" style="width:auto;padding:10px 18px">Sair</button></div>
+  <div class="admin-grid">
+    <div class="panel"><h2>Novo anúncio</h2><p class="admin-note">Cada anúncio representa uma única camiseta.</p><form id="productForm"><input id="pName" placeholder="Nome do carro" required><input id="pBrand" placeholder="Marca" required><input id="pStock" type="number" value="1" min="1" max="1" readonly><input id="pImage" placeholder="URL ou caminho da imagem" required><label class="check"><input id="pActive" type="checkbox" checked> Ativo na loja</label><button class="btn primary" type="submit">+ Criar anúncio</button></form></div>
+    <div class="panel"><h2>Reservas recentes</h2><div id="reservations"></div></div>
+  </div>
+  <div class="panel"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px"><div><h2>Anúncios</h2><p class="admin-note">Ative, oculte ou remova produtos da loja.</p></div><span class="pill">1 unidade por anúncio</span></div><div id="adminProducts" class="admin-products"></div></div>
+</section></main><div id="toast" class="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="config.js"></script><script src="admin.js"></script></body></html>

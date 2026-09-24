@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Faith Store | Faith Car Crew</title>
+<meta name="description" content="Faith Store — camisetas automotivas da Faith Car Crew.">
+<link rel="icon" href="assets/faith-logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#inicio"><img src="assets/faith-logo.png" alt="Faith Car Crew"></a>
+  <nav class="main-nav">
+    <a class="active" href="#inicio"> INÍCIO</a>
+    <a href="#camisetas"> CAMISETAS</a>
+    <a href="#reservas"> MINHAS RESERVAS</a>
+    <a href="#sobre"> SOBRE</a>
+  </nav>
+  <a class="instagram-top" href="https://instagram.com/faithcarcrew" target="_blank" rel="noopener"><strong>◎</strong><span>NOS SIGA NO INSTAGRAM<br><b>@faithcarcrew</b></span></a>
+</header>
+
+<section id="inicio" class="hero" aria-label="Faith Car Crew"><div class="hero-bg"></div></section>
+
+<main class="store-shell">
+  <section id="camisetas" class="catalog-area">
+    <div class="catalog-heading">
+      <div class="heading-icon">♧</div>
+      <div><h1>TODAS AS CAMISETAS</h1><p>Escolha seu carro favorito e faça sua reserva!</p></div>
+    </div>
+    <div id="status" class="status">Carregando camisetas...</div>
+    <div id="products" class="products"></div>
+  </section>
+
+  <aside class="sidebar">
+    <div class="filter-card">
+      <div class="search-box"><input id="search" type="search" placeholder="Buscar por nome do carro..."><span>⌕</span></div>
+      <div id="brandFilter" class="brand-filters"></div>
+    </div>
+
+    <div id="reservas" class="how-card">
+      <h2>COMO FUNCIONA?</h2>
+      <div class="how-step"><b>1</b><span class="how-icon"></span><p>Escolha a camiseta<br>do seu carro favorito.</p></div>
+      <div class="how-step"><b>2</b><span class="how-icon"></span><p>Clique em reservar<br>e preencha seus dados.</p></div>
+    </div>
+  </aside>
+</main>
+
+<section id="sobre" class="about-strip">
+  <div><span class="red-label">FAITH STORE</span><h2>Mais que carros, é uma família.</h2></div>
+  <img src="assets/faith-logo.png" alt="Faith Car Crew">
+</section>
+
+<footer>
+  <div class="footer-brand"><img src="assets/faith-logo.png" alt="Faith Car Crew"></div>
+  <div class="footer-column"><strong>NOS SIGA</strong><a href="https://instagram.com/faithcarcrew" target="_blank">◎ @faithcarcrew</a><a href="https://instagram.com/samue.pereira" target="_blank">◎ @samue.pereira <small>(criador)</small></a></div>
+  <div class="footer-column"><strong>LINKEDIN</strong><a id="creatorLinkedin" href="#">in &nbsp; Samuel Pereira</a></div>
+  <div class="footer-column"><strong>GITHUB</strong><a id="creatorGithub" href="#"> &nbsp; samuel-pereira</a></div>
+  <div class="footer-copy">Faith Car Crew © 2026<br>Todos os direitos reservados.</div>
+</footer>
+
+<div id="modal" class="modal hidden" aria-hidden="true"><div class="modal-card"><button class="modal-close" id="modalClose">×</button><div id="modalBody"></div></div></div>
+<div id="viewer" class="viewer hidden" aria-hidden="true"><div class="viewer-card"><button class="viewer-close" id="viewerClose" aria-label="Fechar">×</button><div class="viewer-photo"><img id="viewerImg" src="" alt=""></div><div class="viewer-meta"><span class="red-label">FAITH STORE</span><h2 id="viewerTitle"></h2><p id="viewerBrand"></p></div></div></div>
+<div id="toast" class="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script><script src="app.js"></script>
+</body></html>

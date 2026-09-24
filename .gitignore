@@ -1,0 +1,4 @@
+# Não versione segredos locais se você criar uma cópia privada.
+.DS_Store
+node_modules/
+.env
